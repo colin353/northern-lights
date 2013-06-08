@@ -6,11 +6,12 @@ class GMap
 		@loaded = no;
 		@map = [];
 		me = @;
-		document.viewcontroller.images.push new GImage("game/maps/#{location}.png",document.viewcontroller)
+		document.viewcontroller.loadImages "game/maps/#{location}.png"
+		@background = document.viewcontroller.images["game/maps/#{location}.png"]
 		if location? 
 			$.get("game/maps/#{location}.json", (r) -> 
 				me.loaded = yes;
 				me.map = r;
 			)
-		else 
+		else  
 			throw 'Invalid map supplied at gmap'

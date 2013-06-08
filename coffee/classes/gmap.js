@@ -8,7 +8,8 @@ GMap = (function() {
     this.loaded = false;
     this.map = [];
     me = this;
-    document.viewcontroller.images.push(new GImage("game/maps/" + location + ".png", document.viewcontroller));
+    document.viewcontroller.loadImages("game/maps/" + location + ".png");
+    this.background = document.viewcontroller.images["game/maps/" + location + ".png"];
     if (location != null) {
       $.get("game/maps/" + location + ".json", function(r) {
         me.loaded = true;
