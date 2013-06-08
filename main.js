@@ -10,6 +10,15 @@
 
   })();
 
+  Prototype = (function() {
+    function Prototype(prototype) {
+      true;
+    }
+
+    return Prototype;
+
+  })();
+
   GImage = (function() {
     function GImage(location, owner) {
       var me;
@@ -131,6 +140,28 @@
     };
 
     return MapController;
+
+  })();
+
+  Prototype = (function() {
+    function Prototype(location) {
+      this.loaded = false;
+      if (location != null) {
+        $.get(location, function(r) {
+          me.loaded = true;
+          me.json = r;
+          return me.didLoad();
+        });
+      } else {
+        throw 'Invalid prototype supplied.';
+      }
+    }
+
+    Prototype.prototype.didLoad = function() {
+      return true;
+    };
+
+    return Prototype;
 
   })();
 
@@ -272,36 +303,5 @@
   };
 
   tick();
-
-  Prototype = (function() {
-    function Prototype(prototype) {
-      true;
-    }
-
-    return Prototype;
-
-  })();
-
-  Prototype = (function() {
-    function Prototype(location) {
-      this.loaded = false;
-      if (location != null) {
-        $.get(location, function(r) {
-          me.loaded = true;
-          me.json = r;
-          return me.didLoad();
-        });
-      } else {
-        throw 'Invalid prototype supplied.';
-      }
-    }
-
-    Prototype.prototype.didLoad = function() {
-      return true;
-    };
-
-    return Prototype;
-
-  })();
 
 }).call(this);
