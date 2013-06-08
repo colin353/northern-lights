@@ -6,10 +6,12 @@ MapController = (function() {
     this.relinquishcontrol = false;
     this.map = new GMap(mapname);
     this.enemies = [];
+    this.towers = [];
     this.count = 0;
     document.viewcontroller.map.push(this.map);
     this.rat = new EnemyPrototype('game/assets/enemies/rat.json');
-    document.viewcontroller.prototypes.push(this.rat);
+    this.tower = new TowerPrototype('game/assets/towers/tower.json');
+    document.viewcontroller.prototypes.push(this.rat, this.tower);
   }
 
   MapController.prototype.spawnEnemy = function(enemyprototype) {
@@ -17,16 +19,22 @@ MapController = (function() {
   };
 
   MapController.prototype.tick = function() {
-    var e, _i, _len, _ref;
+    var e, t, _i, _j, _len, _len1, _ref, _ref1;
 
     if (this.count % 100 === 0) {
       this.spawnEnemy(this.rat);
+      this.towers.push(new Tower(this.tower, this.map.json.towers[0].location));
     }
     viewcontroller.renderSprite(this.map.image, 0, 0, 1);
     _ref = this.enemies;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       e = _ref[_i];
       e.tick.call(e);
+    }
+    _ref1 = this.towers;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      t = _ref1[_j];
+      t.tick.call(t);
     }
     return this.count++;
   };

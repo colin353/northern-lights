@@ -23,3 +23,11 @@ class EnemyPrototype extends Prototype
 		#console.log 'didLoad called: considering ', @json.image
 		@image =  "game/images/#{@json.image}"
 		document.viewcontroller.loadImages @image
+
+class TowerPrototype extends Prototype
+
+	didLoad: ->
+		# We should load the enemy's image based on the JSON specification.
+		#console.log 'didLoad called: considering ', @json.image
+		@image =  "game/images/#{@json.image}"
+		document.viewcontroller.loadImages @image

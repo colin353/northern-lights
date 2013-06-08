@@ -13,5 +13,8 @@ simplifyPath = (path) ->
 		retval.push randomizeVector(p.location, p.radius)
 	return retval
 
+vectorSubtract = (v,u) ->
+	return {x: v.x-u.x, y: v.y-u.y}
+
 vectorLength = (v) ->
 	return Math.sqrt( v.x * v.x + v.y * v.y)
