@@ -16,7 +16,7 @@ class MapController
 		@enemies.push new Enemy @rat, @map.json.nodes
 
 	tick: ->
-		if(@count == 0)
+		if(@count % 100 == 0)
 			@spawnEnemy(@rat)
 
 		#console.log 'MapController tick'

@@ -14,7 +14,7 @@ class ViewController
 		@prototypes = [];
 		@map = [];
 		@stack = [];
-		@timestep = 300;
+		@timestep = 50;
 		@inputstack = [];
 		@dpad_touchstate = [];
 

@@ -10,22 +10,31 @@
       this.prototype = enemyprototype;
       this.path = simplifyPath(path);
       this.position = this.path[0];
+      this.target = 1;
     }
 
     Enemy.prototype.tick = function() {
       var displacement, length;
 
-      console.log('Ticking enemy: ', this.position);
       document.viewcontroller.renderSprite(this.prototype.image, this.position.x, this.position.y, 1);
+      if (this.target === this.path.length) {
+        alert('game over!');
+        throw 'game over!';
+      }
       displacement = {
         x: 0,
         y: 0
       };
-      displacement.x = this.path[1].x - this.position.x;
-      displacement.y = this.path[1].y - this.position.y;
+      displacement.x = this.path[this.target].x - this.position.x;
+      displacement.y = this.path[this.target].y - this.position.y;
       length = vectorLength(displacement);
-      this.position.x += displacement.x / length;
-      return this.position.y += displacement.y / length;
+      if (length < 5) {
+        console.log('Rat node detected!');
+        return this.target++;
+      } else {
+        this.position.x += displacement.x / length;
+        return this.position.y += displacement.y / length;
+      }
     };
 
     return Enemy;
@@ -184,7 +193,7 @@
     MapController.prototype.tick = function() {
       var e, _i, _len, _ref;
 
-      if (this.count === 0) {
+      if (this.count % 100 === 0) {
         this.spawnEnemy(this.rat);
       }
       viewcontroller.renderSprite(this.map.image, 0, 0, 1);
@@ -259,7 +268,7 @@
       this.prototypes = [];
       this.map = [];
       this.stack = [];
-      this.timestep = 300;
+      this.timestep = 50;
       this.inputstack = [];
       this.dpad_touchstate = [];
       this.mousedown = false;
@@ -372,7 +381,7 @@
 
   document.viewcontroller = viewcontroller;
 
-  viewcontroller.stack.push(new MapController('map-01'));
+  viewcontroller.stack.push(new MapController('map-01-not-shitty'));
 
   tick = function() {
     viewcontroller.tick();

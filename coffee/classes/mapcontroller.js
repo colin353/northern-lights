@@ -19,7 +19,7 @@ MapController = (function() {
   MapController.prototype.tick = function() {
     var e, _i, _len, _ref;
 
-    if (this.count === 0) {
+    if (this.count % 100 === 0) {
       this.spawnEnemy(this.rat);
     }
     viewcontroller.renderSprite(this.map.image, 0, 0, 1);

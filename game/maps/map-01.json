@@ -3,7 +3,7 @@
 	"nodes": [
 		{ "location": [126,0], "radius":100 },
 		{ "location": [237,180], "radius":100 },
-		{ "location": [187,300], "radius":100 },
+		{ "location": [854,289], "radius":100 },
 		{ "location": [142,741], "radius":100 }
 	]
 }

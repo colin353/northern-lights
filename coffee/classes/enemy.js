@@ -6,22 +6,31 @@ Enemy = (function() {
     this.prototype = enemyprototype;
     this.path = simplifyPath(path);
     this.position = this.path[0];
+    this.target = 1;
   }
 
   Enemy.prototype.tick = function() {
     var displacement, length;
 
-    console.log('Ticking enemy: ', this.position);
     document.viewcontroller.renderSprite(this.prototype.image, this.position.x, this.position.y, 1);
+    if (this.target === this.path.length) {
+      alert('game over!');
+      throw 'game over!';
+    }
     displacement = {
       x: 0,
       y: 0
     };
-    displacement.x = this.path[1].x - this.position.x;
-    displacement.y = this.path[1].y - this.position.y;
+    displacement.x = this.path[this.target].x - this.position.x;
+    displacement.y = this.path[this.target].y - this.position.y;
     length = vectorLength(displacement);
-    this.position.x += displacement.x / length;
-    return this.position.y += displacement.y / length;
+    if (length < 5) {
+      console.log('Rat node detected!');
+      return this.target++;
+    } else {
+      this.position.x += displacement.x / length;
+      return this.position.y += displacement.y / length;
+    }
   };
 
   return Enemy;
