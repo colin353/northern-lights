@@ -37,8 +37,8 @@ EnemyPrototype = (function(_super) {
   }
 
   EnemyPrototype.prototype.didLoad = function() {
-    this.image = this.json.image;
-    return document.viewcontroller.loadImages("game/images/" + this.image);
+    this.image = "game/images/" + this.json.image;
+    return document.viewcontroller.loadImages(this.image);
   };
 
   return EnemyPrototype;

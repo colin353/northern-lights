@@ -12,7 +12,7 @@ GImage = (function() {
     this.image.src = "" + location;
     me = this;
     this.image.onload = function() {
-      return me.onload();
+      return me.onload.call(me);
     };
     this.loaded = false;
     this.owner = owner;
@@ -20,6 +20,7 @@ GImage = (function() {
 
   GImage.prototype.onload = function() {
     this.loaded = true;
+    console.log('loaded image', this.image);
     if ((this.owner != null) && (this.owner.imageLoaded != null)) {
       return this.owner.imageLoaded();
     }

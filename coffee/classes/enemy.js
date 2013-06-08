@@ -2,16 +2,26 @@
 var Enemy;
 
 Enemy = (function() {
-  function Enemy(enemyprototype) {
+  function Enemy(enemyprototype, path) {
     this.prototype = enemyprototype;
-    this.position = {
-      x: 0,
-      y: 0
-    };
+    this.path = simplifyPath(path);
+    this.position = this.path[0];
   }
 
   Enemy.prototype.tick = function() {
-    return document.viewcontroller.renderSprite(this.prototype.image, this.position.x, this.position.y, 1);
+    var displacement, length;
+
+    console.log('Ticking enemy: ', this.position);
+    document.viewcontroller.renderSprite(this.prototype.image, this.position.x, this.position.y, 1);
+    displacement = {
+      x: 0,
+      y: 0
+    };
+    displacement.x = this.path[1].x - this.position.x;
+    displacement.y = this.path[1].y - this.position.y;
+    length = vectorLength(displacement);
+    this.position.x += displacement.x / length;
+    return this.position.y += displacement.y / length;
   };
 
   return Enemy;

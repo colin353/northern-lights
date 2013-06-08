@@ -17,7 +17,9 @@ class Prototype
 		yes
 
 class EnemyPrototype extends Prototype
+
 	didLoad: ->
 		# We should load the enemy's image based on the JSON specification.
-		@image = @json.image
-		document.viewcontroller.loadImages "game/images/#{@image}"
+		#console.log 'didLoad called: considering ', @json.image
+		@image =  "game/images/#{@json.image}"
+		document.viewcontroller.loadImages @image

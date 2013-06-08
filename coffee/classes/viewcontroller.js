@@ -19,7 +19,7 @@ ViewController = (function() {
     this.prototypes = [];
     this.map = [];
     this.stack = [];
-    this.timestep = 30;
+    this.timestep = 300;
     this.inputstack = [];
     this.dpad_touchstate = [];
     this.mousedown = false;
@@ -55,12 +55,12 @@ ViewController = (function() {
       a = _ref[_i];
       for (_j = 0, _len1 = a.length; _j < _len1; _j++) {
         b = a[_j];
-        if ((b[a].loaded == null) || !b[a].loaded) {
+        if (((b.loaded != null) && !b.loaded) || ((b[a] != null) && ((b[a].loaded == null) || !b[a].loaded))) {
           return false;
         }
       }
-      return true;
     }
+    return true;
   };
 
   ViewController.prototype.loadImages = function() {

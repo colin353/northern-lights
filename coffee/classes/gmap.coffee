@@ -12,7 +12,7 @@ class GMap
 		if location? 
 			$.get("game/maps/#{location}.json", (r) -> 
 				me.loaded = yes;
-				me.map = r;
+				me.json = r;
 			)
 		else  
 			throw 'Invalid map supplied at gmap'

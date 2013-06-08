@@ -14,7 +14,7 @@ class ViewController
 		@prototypes = [];
 		@map = [];
 		@stack = [];
-		@timestep = 30;
+		@timestep = 300;
 		@inputstack = [];
 		@dpad_touchstate = [];
 
@@ -44,9 +44,11 @@ class ViewController
 	ready: ->
 		for a in [@images, @map, @prototypes]
 			for b in a
-				if !b[a].loaded? or !b[a].loaded
+				if (b.loaded? and !b.loaded) or (b[a]? and (!b[a].loaded? or !b[a].loaded))
+					#console.log 'Not yet ready.'
 					return no
-			return yes
+		#console.log 'All ready.'
+		return yes
 
 	loadImages: (list...) ->
 		@images[a] = new GImage(a,@) for a in list

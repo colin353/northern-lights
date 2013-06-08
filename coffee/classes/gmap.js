@@ -14,7 +14,7 @@ GMap = (function() {
     if (location != null) {
       $.get("game/maps/" + location + ".json", function(r) {
         me.loaded = true;
-        return me.map = r;
+        return me.json = r;
       });
     } else {
       throw 'Invalid map supplied at gmap';

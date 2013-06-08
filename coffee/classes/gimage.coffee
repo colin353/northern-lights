@@ -7,13 +7,14 @@ class GImage
 		@image.src = "#{location}";
 		me = @;
 		@image.onload = -> 
-			me.onload()
+			me.onload.call(me)
 
 		@loaded = no 
 		@owner = owner;
  		
 	onload: ->
 		@loaded = yes
+		console.log 'loaded image',@image
 		#alert 'loaded one image...'
 		if @owner? and @owner.imageLoaded?
 			@owner.imageLoaded()
