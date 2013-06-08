@@ -32,8 +32,8 @@
         console.log('Rat node detected!');
         return this.target++;
       } else {
-        this.position.x += displacement.x / length;
-        return this.position.y += displacement.y / length;
+        this.position.x += displacement.x / length * this.prototype.json.speed;
+        return this.position.y += displacement.y / length * this.prototype.json.speed;
       }
     };
 

@@ -1,13 +1,13 @@
 {	
 	"title": "Northern Lights",
 	"nodes": [
-		{ "location": [470,0], "radius":100 },
-		{ "location": [452,162], "radius":100 },
-		{ "location": [372,210], "radius":100 },
-		{ "location": [171,252], "radius":100 },
-		{ "location": [195,428], "radius":100 },
-		{ "location": [308,487], "radius":100 },
-		{ "location": [1021,478], "radius":100 }
+		{ "location": [470,0], "radius":5 },
+		{ "location": [452,200], "radius":5},
+		{ "location": [372,210], "radius":5 },
+		{ "location": [171,252], "radius":5 },
+		{ "location": [195,428], "radius":5 },
+		{ "location": [308,487], "radius":5 },
+		{ "location": [1021,478], "radius":5 }
 	],
 
 

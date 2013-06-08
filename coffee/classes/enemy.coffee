@@ -31,6 +31,6 @@ class Enemy
 			console.log 'Rat node detected!'
 			@target++
 		else
-			@position.x += displacement.x / length
-			@position.y += displacement.y / length
+			@position.x += displacement.x / length * @prototype.json.speed
+			@position.y += displacement.y / length * @prototype.json.speed
 		#console.log 'Updating rat path: ', @path[1]

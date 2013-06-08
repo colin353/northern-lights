@@ -1,3 +1,9 @@
 {
-	"image":"rat.png"
+	"image":"rat.png",
+	"health": 50,
+	"speed": 6,
+	"damage": 3,
+	"attackspeed" : 3,
+	"armor" : 1,
+	"description" : "Very fast, but weak creature with low armor."
 }
