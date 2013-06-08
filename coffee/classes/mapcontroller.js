@@ -5,10 +5,13 @@ MapController = (function() {
   function MapController(mapname) {
     this.relinquishcontrol = false;
     this.map = new GMap(mapname);
+    this.enemies = [];
+    this.enemies.push(new Enemy);
     document.viewcontroller.map.push(this.map);
   }
 
   MapController.prototype.tick = function() {
+    viewcontroller.renderSprite(this.map.image, 0, 0, 1);
     return true;
   };
 

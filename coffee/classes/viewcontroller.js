@@ -16,6 +16,7 @@ ViewController = (function() {
       this.context.font = '45px "Courier"';
     }
     this.images = [];
+    this.prototypes = [];
     this.map = [];
     this.stack = [];
     this.timestep = 30;
@@ -49,7 +50,7 @@ ViewController = (function() {
   ViewController.prototype.ready = function() {
     var a, b, _i, _j, _len, _len1, _ref;
 
-    _ref = [this.images, this.map];
+    _ref = [this.images, this.map, this.prototypes];
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       a = _ref[_i];
       for (_j = 0, _len1 = a.length; _j < _len1; _j++) {

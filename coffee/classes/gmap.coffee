@@ -7,6 +7,7 @@ class GMap
 		@map = [];
 		me = @;
 		document.viewcontroller.loadImages "game/maps/#{location}.png"
+		@image = "game/maps/#{location}.png"
 		@background = document.viewcontroller.images["game/maps/#{location}.png"]
 		if location? 
 			$.get("game/maps/#{location}.json", (r) -> 

@@ -1,6 +1,8 @@
 # The view controller is an abstraction for the canvas, and drawing is done through it. It also manages
 # asset loading, e.g. images.
 
+#= require enemy.coffee
+
 class ViewController
 	constructor: (selector = "pokeCanvas") ->
 		@canvas = $("##{selector}").get(0)
@@ -9,6 +11,7 @@ class ViewController
 		# Need to specify alternative font choice for mobile safari, for some reason
 		@context.font = '45px "Courier"' if isMobileSafari()
 		@images = [];
+		@prototypes = [];
 		@map = [];
 		@stack = [];
 		@timestep = 30;
@@ -39,7 +42,7 @@ class ViewController
 
 
 	ready: ->
-		for a in [@images, @map]
+		for a in [@images, @map, @prototypes]
 			for b in a
 				if !b[a].loaded? or !b[a].loaded
 					return no
@@ -55,7 +58,7 @@ class ViewController
 		height = @images[image].image.height
 		@context.save()
 		if(flip == yes)
-			@context.translate(@canvas.width/2,0);
+			@context.translate(@canvas.width/2,0)
 			@context.scale(-1, 1)
 			@context.translate(-@canvas.width/2,0)
 			x = @canvas.width - x - width*scale

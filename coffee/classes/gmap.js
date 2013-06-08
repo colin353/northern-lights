@@ -9,6 +9,7 @@ GMap = (function() {
     this.map = [];
     me = this;
     document.viewcontroller.loadImages("game/maps/" + location + ".png");
+    this.image = "game/maps/" + location + ".png";
     this.background = document.viewcontroller.images["game/maps/" + location + ".png"];
     if (location != null) {
       $.get("game/maps/" + location + ".json", function(r) {
